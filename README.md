@@ -7,8 +7,7 @@ You can try the blacklist using the tool [Username checker](http://marteinn.gith
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `the_big_username_blacklist` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `the_big_username_blacklist` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -18,12 +17,32 @@ def deps do
 end
 ```
 
-## Basic Usage
+## Usage
 ```elixir
 iex> TheBigUsernameBlacklist.valid?("tonystark")
 true
 iex> TheBigUsernameBlacklist.valid?("logout")
 false
+```
+
+### Ecto
+
+```elixir
+def create_user_changeset(%User{} = user, attrs \\ %{}) do
+  user
+  |> user_changeset(attrs)
+  |> validate_username()
+end
+
+defp validate_username(%{changes: %{username: username}} = changeset) do
+  if TheBigUsernameBlacklist.valid?(username) do
+    changeset
+  else
+    add_error(changeset, :username, "Invalid username.")
+  end
+end
+
+defp validate_username(changeset), do: changeset
 ```
 
 For more info, check [https://hexdocs.pm/the_big_username_blacklist](https://hexdocs.pm/the_big_username_blacklist).
