@@ -24,13 +24,15 @@ true
 iex> TheBigUsernameBlacklist.valid?("logout")
 false
 ```
+For more info, check [https://hexdocs.pm/the_big_username_blacklist](https://hexdocs.pm/the_big_username_blacklist).
 
-### Ecto
+### With Ecto
 
 ```elixir
 def create_user_changeset(%User{} = user, attrs \\ %{}) do
   user
   |> user_changeset(attrs)
+  |> validate_required([:email, :username, :first_name, :last_name])
   |> validate_username()
 end
 
@@ -44,8 +46,6 @@ end
 
 defp validate_username(changeset), do: changeset
 ```
-
-For more info, check [https://hexdocs.pm/the_big_username_blacklist](https://hexdocs.pm/the_big_username_blacklist).
 
 ## License
 
