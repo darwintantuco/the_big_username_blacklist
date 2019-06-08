@@ -8,7 +8,8 @@ defmodule TheBigUsernameBlacklist.MixProject do
       elixir: "~> 1.3",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      package: package()
+      package: package(),
+      description: description()
     ]
   end
 
@@ -33,5 +34,11 @@ defmodule TheBigUsernameBlacklist.MixProject do
       licenses: ["MIT"],
       links: %{"Github" => "https://github.com/dcrtantuco/the-big-username-blacklist"}
     ]
+  end
+
+  defp description() do
+    """
+    Elixir library for The-Big-Username-Blacklist (A opinionated username blacklist).
+    """
   end
 end
