@@ -1,4 +1,5 @@
 # TheBigUsernameBlacklist
+[![Build Status](https://travis-ci.org/dcrtantuco/the-big-username-blacklist.svg?branch=master)](https://travis-ci.org/dcrtantuco/the-big-username-blacklist)
 
 **TODO: Add description**
 
