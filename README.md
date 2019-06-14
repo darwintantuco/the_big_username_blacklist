@@ -12,7 +12,7 @@ The package can be installed by adding `the_big_username_blacklist` to your list
 ```elixir
 def deps do
   [
-    {:the_big_username_blacklist, "~> 0.1.0"}
+    {:the_big_username_blacklist, "~> 0.1.1"}
   ]
 end
 ```
@@ -26,7 +26,7 @@ iex> TheBigUsernameBlacklist.valid?("logout")
 false
 ```
 
-### Adding custom strings to blacklist
+### Adding custom string to blacklist
 
 This is useful when there are existing routes that you don't want to be a valid username.
 
