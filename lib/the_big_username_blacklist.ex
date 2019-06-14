@@ -543,8 +543,13 @@ defmodule TheBigUsernameBlacklist do
       iex> TheBigUsernameBlacklist.valid?("logout")
       false
 
+      iex> custom_blacklist = ["about-me", "contact-us"]
+      iex> TheBigUsernameBlacklist.valid?("about-me", custom_blacklist)
+      false
+
   """
-  def valid?(username), do: !Enum.member?(@blacklist, username)
+  def valid?(username, custom_blacklist \\ []),
+    do: !Enum.member?(@blacklist ++ custom_blacklist, username)
 
   @doc """
   Returns all black listed usernames

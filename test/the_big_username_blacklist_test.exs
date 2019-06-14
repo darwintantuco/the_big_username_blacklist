@@ -2,12 +2,20 @@ defmodule TheBigUsernameBlacklistTest do
   use ExUnit.Case
   doctest TheBigUsernameBlacklist
 
-  test "Returns true when string is not included in black list" do
+  test "Returns true when string is not included in blacklist" do
     assert TheBigUsernameBlacklist.valid?("dcrtantuco") == true
   end
 
-  test "Returns false when string is included in black list" do
+  test "Returns false when string is included in blacklist" do
     assert TheBigUsernameBlacklist.valid?("logout") == false
+  end
+
+  test "Returns true when string is not included in custom blacklist" do
+    assert TheBigUsernameBlacklist.valid?("dcrtantuco", ["about-me", "contact-us"]) == true
+  end
+
+  test "Returns false when string is included in custom blacklist" do
+    assert TheBigUsernameBlacklist.valid?("about-me", ["about-me", "contact-us"]) == false
   end
 
   test "Returns list of black listed usernames" do

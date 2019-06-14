@@ -21,10 +21,24 @@ end
 ```elixir
 iex> TheBigUsernameBlacklist.valid?("tonystark")
 true
+
 iex> TheBigUsernameBlacklist.valid?("logout")
 false
 ```
-For more info, check [https://hexdocs.pm/the_big_username_blacklist](https://hexdocs.pm/the_big_username_blacklist).
+
+### Adding custom strings to blacklist
+
+This is useful when there are existing routes that you don't want to be a valid username.
+
+```elixir
+iex> custom_blacklist = ["about-me", "contact-us"]
+
+iex> TheBigUsernameBlacklist.valid?("about-me", custom_blacklist)
+false
+
+iex> TheBigUsernameBlacklist.valid?("brucewayne", custom_blacklist)
+true
+```
 
 ### With Ecto
 
@@ -46,6 +60,8 @@ end
 
 defp validate_username(changeset), do: changeset
 ```
+
+For more info, check [https://hexdocs.pm/the_big_username_blacklist](https://hexdocs.pm/the_big_username_blacklist).
 
 ## License
 
