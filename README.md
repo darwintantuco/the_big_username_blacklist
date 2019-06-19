@@ -63,6 +63,13 @@ defp validate_username(changeset), do: changeset
 
 For more info, check [https://hexdocs.pm/the_big_username_blacklist](https://hexdocs.pm/the_big_username_blacklist).
 
+## Other packages
+[The-Big-Username-Blacklist](https://github.com/marteinn/The-Big-Username-Blacklist) has been ported to different languages
+
+- [python](https://github.com/marteinn/the-big-username-blacklist-python)
+- [node](https://github.com/marteinn/the-big-username-blacklist-js)
+- [ruby](https://github.com/unlearned/the_big_username_blacklist)
+
 ## License
 
 MIT
