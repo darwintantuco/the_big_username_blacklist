@@ -26,9 +26,9 @@ iex> TheBigUsernameBlacklist.valid?("logout")
 false
 ```
 
-### Adding custom string to blacklist
+### Extending blacklist
 
-This is useful when there are existing routes that you don't want to be a valid username.
+This is useful when there are existing routes or reserved words that you don't want to be a valid username.
 
 ```elixir
 iex> custom_blacklist = ["about-me", "contact-us"]
