@@ -37,7 +37,7 @@ defmodule TheBigUsernameBlacklist.MixProject do
 
   defp description() do
     """
-    Elixir library for The-Big-Username-Blacklist (A opinionated username blacklist).
+    Elixir library for The-Big-Username-Blacklist (Opinionated username blacklist).
     """
   end
 end
