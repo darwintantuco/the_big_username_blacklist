@@ -12,7 +12,7 @@ The package can be installed by adding `the_big_username_blacklist` to your list
 ```elixir
 def deps do
   [
-    {:the_big_username_blacklist, "~> 0.1.1"}
+    {:the_big_username_blacklist, "~> 0.1.2"}
   ]
 end
 ```
