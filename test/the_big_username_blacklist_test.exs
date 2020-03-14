@@ -3,7 +3,7 @@ defmodule TheBigUsernameBlacklistTest do
   doctest TheBigUsernameBlacklist
 
   test "Returns true when string is not included in blacklist" do
-    assert TheBigUsernameBlacklist.valid?("dcrtantuco") == true
+    assert TheBigUsernameBlacklist.valid?("tonystark") == true
   end
 
   test "Returns false when string is included in blacklist" do
@@ -11,7 +11,7 @@ defmodule TheBigUsernameBlacklistTest do
   end
 
   test "Returns true when string is not included in custom blacklist" do
-    assert TheBigUsernameBlacklist.valid?("dcrtantuco", ["about-me", "contact-us"]) == true
+    assert TheBigUsernameBlacklist.valid?("tonystark", ["about-me", "contact-us"]) == true
   end
 
   test "Returns false when string is included in custom blacklist" do
