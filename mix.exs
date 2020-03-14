@@ -4,7 +4,7 @@ defmodule TheBigUsernameBlacklist.MixProject do
   def project do
     [
       app: :the_big_username_blacklist,
-      version: "0.1.1",
+      version: "0.1.2",
       elixir: "~> 1.3",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -31,7 +31,7 @@ defmodule TheBigUsernameBlacklist.MixProject do
     [
       maintainers: ["Darwin Christopher Tantuco"],
       licenses: ["MIT"],
-      links: %{"Github" => "https://github.com/dcrtantuco/the-big-username-blacklist"}
+      links: %{"Github" => "https://github.com/darwintantuco/the-big-username-blacklist"}
     ]
   end
 
