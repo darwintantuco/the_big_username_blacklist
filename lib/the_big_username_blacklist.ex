@@ -548,8 +548,12 @@ defmodule TheBigUsernameBlacklist do
       false
 
   """
-  def valid?(username, custom_blacklist \\ []),
-    do: !Enum.member?(@blacklist ++ custom_blacklist, username)
+  def valid?(username, custom_blacklist \\ []) do
+    (@blacklist ++ custom_blacklist)
+    |> MapSet.new()
+    |> MapSet.member?(username)
+    |> Kernel.not()
+  end
 
   @doc """
   Returns all black listed usernames
