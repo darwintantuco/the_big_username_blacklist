@@ -1,5 +1,5 @@
 # TheBigUsernameBlacklist
-[![Build Status](https://travis-ci.org/dcrtantuco/the-big-username-blacklist.svg?branch=master)](https://travis-ci.org/dcrtantuco/the-big-username-blacklist)
+[![Build Status](https://travis-ci.org/darwintantuco/the-big-username-blacklist.svg?branch=master)](https://travis-ci.org/darwintantuco/the-big-username-blacklist)
 
 This library lets you validate usernames against a blacklist. The blacklist data is based on the data from [The-Big-Username-Blacklist](https://github.com/marteinn/The-Big-Username-Blacklist) and contains privilege, programming terms, section names, financial terms and actions.
 
