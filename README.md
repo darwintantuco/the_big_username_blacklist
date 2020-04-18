@@ -1,5 +1,6 @@
 # TheBigUsernameBlacklist
-[![Build Status](https://travis-ci.org/darwintantuco/the-big-username-blacklist.svg?branch=master)](https://travis-ci.org/darwintantuco/the-big-username-blacklist)
+
+![Elixir CI](https://github.com/darwintantuco/the_big_username_blacklist/workflows/Elixir%20CI/badge.svg)
 
 This library lets you validate usernames against a blacklist. The blacklist data is based on the data from [The-Big-Username-Blacklist](https://github.com/marteinn/The-Big-Username-Blacklist) and contains privilege, programming terms, section names, financial terms and actions.
 
@@ -18,6 +19,7 @@ end
 ```
 
 ## Usage
+
 ```elixir
 iex> TheBigUsernameBlacklist.valid?("tonystark")
 true
@@ -64,6 +66,7 @@ defp validate_username(changeset), do: changeset
 For more info, check [https://hexdocs.pm/the_big_username_blacklist](https://hexdocs.pm/the_big_username_blacklist).
 
 ## Other packages
+
 [The-Big-Username-Blacklist](https://github.com/marteinn/The-Big-Username-Blacklist) has been ported to different languages
 
 - [python](https://github.com/marteinn/the-big-username-blacklist-python)
