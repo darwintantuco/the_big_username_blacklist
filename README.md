@@ -28,18 +28,60 @@ iex> TheBigUsernameBlacklist.valid?("logout")
 false
 ```
 
-### Extending blacklist
+## Configuration
 
-This is useful when there are existing routes or reserved words that you don't want to be a valid username.
+### Option 1: Global Configuration (Recommended)
+
+Configure global extensions in your config file:
 
 ```elixir
-iex> custom_blacklist = ["about-me", "contact-us"]
+# config/config.exs
+config :the_big_username_blacklist,
+  extra: ~w[about-me contact-us myapp-admin]
+```
 
-iex> TheBigUsernameBlacklist.valid?("about-me", custom_blacklist)
+These will be applied to all validation calls:
+
+```elixir
+# Will automatically use your global config
+iex> TheBigUsernameBlacklist.valid?("about-me")
 false
 
-iex> TheBigUsernameBlacklist.valid?("brucewayne", custom_blacklist)
+iex> TheBigUsernameBlacklist.valid?("tonystark")
 true
+```
+
+### Option 2: Runtime Options
+
+You can also extend the blacklist per-call using the `:extra` option:
+
+```elixir
+# Add custom blacklisted terms
+iex> TheBigUsernameBlacklist.valid?("about-me", extra: ["about-me", "contact-us"])
+false
+
+# Using sigil for cleaner syntax
+iex> TheBigUsernameBlacklist.valid?("contact-us", extra: ~w[about-me contact-us])
+false
+
+iex> TheBigUsernameBlacklist.valid?("brucewayne", extra: ~w[about-me contact-us])
+true
+```
+
+Runtime options are combined with global configuration.
+
+### Migration from v0.1.x
+
+The old API still works but shows a deprecation warning:
+
+```elixir
+# Deprecated (shows warning)
+iex> TheBigUsernameBlacklist.valid?("about-me", ["about-me", "contact-us"])
+false
+
+# Preferred
+iex> TheBigUsernameBlacklist.valid?("about-me", extra: ["about-me", "contact-us"])
+false
 ```
 
 ### With Ecto

@@ -10,12 +10,63 @@ defmodule TheBigUsernameBlacklistTest do
     assert TheBigUsernameBlacklist.valid?("logout") == false
   end
 
-  test "Returns true when string is not included in custom blacklist" do
-    assert TheBigUsernameBlacklist.valid?("tonystark", ["about-me", "contact-us"]) == true
+  # New keyword API tests
+  test "Returns true when string is not included in extra blacklist" do
+    assert TheBigUsernameBlacklist.valid?("tonystark", extra: ["about-me", "contact-us"]) == true
   end
 
-  test "Returns false when string is included in custom blacklist" do
-    assert TheBigUsernameBlacklist.valid?("about-me", ["about-me", "contact-us"]) == false
+  test "Returns false when string is included in extra blacklist" do
+    assert TheBigUsernameBlacklist.valid?("about-me", extra: ["about-me", "contact-us"]) == false
+  end
+
+  test "Can use sigil for extra blacklist" do
+    assert TheBigUsernameBlacklist.valid?("contact-us", extra: ~w[about-me contact-us]) == false
+  end
+
+  # Global configuration tests
+  test "Uses global configuration when set" do
+    # Set global config
+    Application.put_env(:the_big_username_blacklist, :extra, ["global-custom"])
+
+    # Global config should be applied
+    assert TheBigUsernameBlacklist.valid?("global-custom") == false
+
+    # Clean up
+    Application.delete_env(:the_big_username_blacklist, :extra)
+  end
+
+  test "Runtime options are added to global configuration" do
+    # Set global config
+    Application.put_env(:the_big_username_blacklist, :extra, ["global-custom"])
+
+    # Runtime options should be added to global config
+    assert TheBigUsernameBlacklist.valid?("runtime-custom", extra: ["runtime-custom"]) == false
+    assert TheBigUsernameBlacklist.valid?("global-custom", extra: ["runtime-custom"]) == false
+
+    # Clean up
+    Application.delete_env(:the_big_username_blacklist, :extra)
+  end
+
+  # Backwards compatibility tests (with deprecation warnings)
+  test "Returns true when string is not included in custom blacklist (deprecated)" do
+    # Capture warnings to test deprecation warning is shown
+    import ExUnit.CaptureIO
+
+    result = capture_io(:stderr, fn ->
+      assert TheBigUsernameBlacklist.valid?("tonystark", ["about-me", "contact-us"]) == true
+    end)
+
+    assert result =~ "deprecated"
+  end
+
+  test "Returns false when string is included in custom blacklist (deprecated)" do
+    import ExUnit.CaptureIO
+
+    result = capture_io(:stderr, fn ->
+      assert TheBigUsernameBlacklist.valid?("about-me", ["about-me", "contact-us"]) == false
+    end)
+
+    assert result =~ "deprecated"
   end
 
   test "Returns list of black listed usernames" do
