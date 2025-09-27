@@ -4,7 +4,7 @@ defmodule TheBigUsernameBlacklist.MixProject do
   def project do
     [
       app: :the_big_username_blacklist,
-      version: "0.1.2",
+      version: "0.2.0",
       elixir: "~> 1.3",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -23,7 +23,7 @@ defmodule TheBigUsernameBlacklist.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.20.2", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.30", only: :dev, runtime: false}
     ]
   end
 
@@ -31,7 +31,7 @@ defmodule TheBigUsernameBlacklist.MixProject do
     [
       maintainers: ["Darwin Christopher Tantuco"],
       licenses: ["MIT"],
-      links: %{"Github" => "https://github.com/darwintantuco/the-big-username-blacklist"}
+      links: %{"GitHub" => "https://github.com/darwintantuco/the-big-username-blacklist"}
     ]
   end
 
