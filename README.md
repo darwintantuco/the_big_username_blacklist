@@ -13,7 +13,7 @@ The package can be installed by adding `the_big_username_blacklist` to your list
 ```elixir
 def deps do
   [
-    {:the_big_username_blacklist, "~> 0.1.2"}
+    {:the_big_username_blacklist, "~> 0.2.0"}
   ]
 end
 ```
@@ -29,6 +29,8 @@ false
 ```
 
 ## Configuration
+
+You can extend the blacklist with your own terms. This is useful when there are existing routes or reserved words that you don't want to be a valid username.
 
 ### Option 1: Global Configuration (Recommended)
 
@@ -70,21 +72,7 @@ true
 
 Runtime options are combined with global configuration.
 
-### Migration from v0.1.x
-
-The old API still works but shows a deprecation warning:
-
-```elixir
-# Deprecated (shows warning)
-iex> TheBigUsernameBlacklist.valid?("about-me", ["about-me", "contact-us"])
-false
-
-# Preferred
-iex> TheBigUsernameBlacklist.valid?("about-me", extra: ["about-me", "contact-us"])
-false
-```
-
-### With Ecto
+## Usage with Ecto
 
 ```elixir
 def create_user_changeset(%User{} = user, attrs \\ %{}) do
@@ -103,6 +91,20 @@ defp validate_username(%{changes: %{username: username}} = changeset) do
 end
 
 defp validate_username(changeset), do: changeset
+```
+
+## Migration from v0.1.x
+
+The old API still works but shows a deprecation warning:
+
+```elixir
+# Deprecated (shows warning)
+iex> TheBigUsernameBlacklist.valid?("about-me", ["about-me", "contact-us"])
+false
+
+# Preferred
+iex> TheBigUsernameBlacklist.valid?("about-me", extra: ["about-me", "contact-us"])
+false
 ```
 
 For more info, check [https://hexdocs.pm/the_big_username_blacklist](https://hexdocs.pm/the_big_username_blacklist).

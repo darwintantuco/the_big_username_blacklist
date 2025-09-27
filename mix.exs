@@ -23,7 +23,7 @@ defmodule TheBigUsernameBlacklist.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_doc, "~> 0.20.2", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.30", only: :dev, runtime: false}
     ]
   end
 
@@ -31,7 +31,7 @@ defmodule TheBigUsernameBlacklist.MixProject do
     [
       maintainers: ["Darwin Christopher Tantuco"],
       licenses: ["MIT"],
-      links: %{"Github" => "https://github.com/darwintantuco/the-big-username-blacklist"}
+      links: %{"GitHub" => "https://github.com/darwintantuco/the-big-username-blacklist"}
     ]
   end
 
