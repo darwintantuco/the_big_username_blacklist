@@ -52,9 +52,10 @@ defmodule TheBigUsernameBlacklistTest do
     # Capture warnings to test deprecation warning is shown
     import ExUnit.CaptureIO
 
-    result = capture_io(:stderr, fn ->
-      assert TheBigUsernameBlacklist.valid?("tonystark", ["about-me", "contact-us"]) == true
-    end)
+    result =
+      capture_io(:stderr, fn ->
+        assert TheBigUsernameBlacklist.valid?("tonystark", ["about-me", "contact-us"]) == true
+      end)
 
     assert result =~ "deprecated"
   end
@@ -62,9 +63,10 @@ defmodule TheBigUsernameBlacklistTest do
   test "Returns false when string is included in custom blacklist (deprecated)" do
     import ExUnit.CaptureIO
 
-    result = capture_io(:stderr, fn ->
-      assert TheBigUsernameBlacklist.valid?("about-me", ["about-me", "contact-us"]) == false
-    end)
+    result =
+      capture_io(:stderr, fn ->
+        assert TheBigUsernameBlacklist.valid?("about-me", ["about-me", "contact-us"]) == false
+      end)
 
     assert result =~ "deprecated"
   end
